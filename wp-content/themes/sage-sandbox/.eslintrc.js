@@ -42,6 +42,9 @@ module.exports = {
         "exports": "always-multiline",
         "functions": "ignore"
       }
-    ]
-  }
+    ],
+    "semi": [2, 'never'],
+    "brace-style": "error"
+  },
 }
+
