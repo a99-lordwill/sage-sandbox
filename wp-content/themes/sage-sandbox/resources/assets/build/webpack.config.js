@@ -1,17 +1,17 @@
 'use strict'; // eslint-disable-line
 
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const CleanPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
-const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const CleanPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const StyleLintPlugin = require('stylelint-webpack-plugin')
+const CopyGlobsPlugin = require('copy-globs-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
-const desire = require('./util/desire');
-const config = require('./config');
+const desire = require('./util/desire')
+const config = require('./config')
 
-const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
+const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]'
 
 let webpackConfig = {
   context: config.paths.assets,
@@ -183,20 +183,20 @@ let webpackConfig = {
     }),
     new FriendlyErrorsWebpackPlugin(),
   ],
-};
+}
 
 /* eslint-disable global-require */ /** Let's only load dependencies as needed */
 
 if (config.enabled.optimize) {
-  webpackConfig = merge(webpackConfig, require('./webpack.config.optimize'));
+  webpackConfig = merge(webpackConfig, require('./webpack.config.optimize'))
 }
 
 if (config.env.production) {
-  webpackConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin());
+  webpackConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin())
 }
 
 if (config.enabled.cacheBusting) {
-  const WebpackAssetsManifest = require('webpack-assets-manifest');
+  const WebpackAssetsManifest = require('webpack-assets-manifest')
 
   webpackConfig.plugins.push(
     new WebpackAssetsManifest({
@@ -206,14 +206,14 @@ if (config.enabled.cacheBusting) {
       assets: config.manifest,
       replacer: require('./util/assetManifestsFormatter'),
     })
-  );
+  )
 }
 
 if (config.enabled.watcher) {
-  webpackConfig.entry = require('./util/addHotMiddleware')(webpackConfig.entry);
-  webpackConfig = merge(webpackConfig, require('./webpack.config.watch'));
+  webpackConfig.entry = require('./util/addHotMiddleware')(webpackConfig.entry)
+  webpackConfig = merge(webpackConfig, require('./webpack.config.watch'))
 }
 
 module.exports = merge.smartStrategy({
   'module.loaders': 'replace',
-})(webpackConfig, desire(`${__dirname}/webpack.config.preset`));
+})(webpackConfig, desire(`${__dirname}/webpack.config.preset`))

@@ -1,10 +1,10 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = (key, value) => {
   if (typeof value === 'string') {
-    return value;
+    return value
   }
-  const manifest = value;
+  const manifest = value
   /**
    * Hack to prepend scripts/ or styles/ to manifest keys
    *
@@ -22,13 +22,13 @@ module.exports = (key, value) => {
    *   }
    */
   Object.keys(manifest).forEach((src) => {
-    const sourcePath = path.basename(path.dirname(src));
-    const targetPath = path.basename(path.dirname(manifest[src]));
+    const sourcePath = path.basename(path.dirname(src))
+    const targetPath = path.basename(path.dirname(manifest[src]))
     if (sourcePath === targetPath) {
-      return;
+      return
     }
-    manifest[`${targetPath}/${src}`] = manifest[src];
-    delete manifest[src];
-  });
-  return manifest;
-};
+    manifest[`${targetPath}/${src}`] = manifest[src]
+    delete manifest[src]
+  })
+  return manifest
+}

@@ -6,9 +6,9 @@
  */
 module.exports = (dependency, fallback) => {
   try {
-    require.resolve(dependency);
+    require.resolve(dependency)
   } catch (err) {
-    return fallback;
+    return fallback
   }
-  return require(dependency); // eslint-disable-line import/no-dynamic-require
-};
+  return require(dependency) // eslint-disable-line import/no-dynamic-require
+}

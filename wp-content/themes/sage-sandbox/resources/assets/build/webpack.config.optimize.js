@@ -1,10 +1,10 @@
 'use strict'; // eslint-disable-line
 
-const { default: ImageminPlugin } = require('imagemin-webpack-plugin');
-const imageminMozjpeg = require('imagemin-mozjpeg');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { default: ImageminPlugin } = require('imagemin-webpack-plugin')
+const imageminMozjpeg = require('imagemin-mozjpeg')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const config = require('./config');
+const config = require('./config')
 
 module.exports = {
   plugins: [
@@ -32,4 +32,4 @@ module.exports = {
       },
     }),
   ],
-};
+}
