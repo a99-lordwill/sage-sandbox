@@ -20,7 +20,7 @@ let webpackConfig = {
   output: {
     path: config.paths.dist,
     publicPath: config.publicPath,
-    filename: `scripts/${assetsFilenames}.js`,
+    filename: `scripts/${ assetsFilenames }.js`,
   },
   stats: {
     hash: false,
@@ -105,7 +105,7 @@ let webpackConfig = {
         loader: 'url',
         options: {
           limit: 4096,
-          name: `[path]${assetsFilenames}.[ext]`,
+          name: `[path]${ assetsFilenames }.[ext]`,
         },
       },
       {
@@ -115,7 +115,7 @@ let webpackConfig = {
         options: {
           limit: 4096,
           outputPath: 'vendor/',
-          name: `${config.cacheBusting}.[ext]`,
+          name: `${ config.cacheBusting }.[ext]`,
         },
       },
     ],
@@ -145,11 +145,11 @@ let webpackConfig = {
      */
     new CopyGlobsPlugin({
       pattern: config.copy,
-      output: `[path]${assetsFilenames}.[ext]`,
+      output: `[path]${ assetsFilenames }.[ext]`,
       manifest: config.manifest,
     }),
     new ExtractTextPlugin({
-      filename: `styles/${assetsFilenames}.css`,
+      filename: `styles/${ assetsFilenames }.css`,
       allChunks: true,
       disable: (config.enabled.watcher),
     }),
@@ -216,4 +216,4 @@ if (config.enabled.watcher) {
 
 module.exports = merge.smartStrategy({
   'module.loaders': 'replace',
-})(webpackConfig, desire(`${__dirname}/webpack.config.preset`))
+})(webpackConfig, desire(`${ __dirname }/webpack.config.preset`))
