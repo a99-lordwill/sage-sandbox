@@ -1,7 +1,100 @@
-.banner .nav li {
-  @extend .nav-item;
-}
+header {
+  background-size: cover;
+  background-position: center;
+  min-height: 680px;
+  position: relative;
 
-.banner .nav a {
-  @extend .nav-link;
+  .main-navigation {
+    background-color: transparent;
+    // background-color: $primary;
+    color: #fff;
+    padding: 18px 0;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    transition: all 0.3s ease-in;
+
+    &.page-scrolled {
+      background-color: #fff;
+      -webkit-box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.5);
+    }
+
+    .navigation__logo-wrapper {
+      a {
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        text-decoration: none;
+      }
+    }
+
+    .navigation__menu-wrapper {
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+      text-align: right;
+
+      .navigation__menu {
+        height: 20px;
+        position: relative;
+        width: 30px;
+
+        .navigation__menu-span {
+          background-color: #fff;
+          border-radius: 4px;
+          display: block;
+          height: 3px;
+          position: absolute;
+          width: 30px;
+
+          &:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          &:last-child {
+            bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .header-banner {
+    @include center-flex();
+
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    h1 {
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 150px;
+      font-weight: 700;
+      line-height: 170px;
+      width: 100%;
+      white-space: nowrap;
+    }
+
+    h4 {
+      color: #fff;
+      font-family: 'Muli', sans-serif;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 300;
+      max-width: 60%;
+      margin: 10px auto 0;
+    }
+  }
 }

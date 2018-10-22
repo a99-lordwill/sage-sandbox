@@ -1,7 +1,7 @@
 export default {
   init() {
     // JavaScript to be fired on the home page
-    console.log('home init')
+    console.log('home inits')
 
   },
   finalize() {
